@@ -1,30 +1,87 @@
 {
     "features": [
         {
-            "id": "helloworld",
-            "name": "My First Feature",
+            "id": "kubernetes",
+            "name": "Kubernetes Tools",
             "options": {
-                "greeting": {
+                "skaffold": {
                     "type": "string",
-                    "proposals": [ "hey", "hello", "hi", "howdy" ],
-                    "default": "hey",
-                    "description": "Select a pre-made greeting, or enter your own"
+                    "proposals": [ "none", "latest", "v1.37.0", "v1.36.0" ],
+                    "default": "latest",
+                    "description": "Select skaffold version"
+                },
+                "k3d": {
+                    "type": "string",
+                    "proposals": [ "none", "latest", "v5.2.2" ],
+                    "default": "latest",
+                    "description": "Select k3d version"
+                },
+                "kustomize": {
+                    "type": "string",
+                    "proposals": [ "none", "latest", "5.2.2" ],
+                    "default": "none",
+                    "description": "Select Kustomize version"
+                },
+                "istioctl": {
+                    "type": "string",
+                    "proposals": [ "none", "latest", "1.13.2" ],
+                    "default": "none",
+                    "description": "Select Istio version"
+                },
+                "krew": {
+                    "type": "string",
+                    "proposals": [ "none", "latest" ],
+                    "default": "latest",
+                    "description": "Install krew install script in /usr/local/install/k8s when not none."
                 }
             },
-            "include": ["ubuntu"]
+            "include": [
+                "kubectl-helm-minikube"
+            ]
         },
         {
-            "id": "color",
-            "name": "A feature to remind you of your favorite color",
+            "id": "gomplate",
+            "name": "Gomplate",
             "options": {
-                "favorite": {
+                "version": {
                     "type": "string",
-                    "enum": [ "red", "gold", "green" ],
-                    "default": "red",
-                    "description": "Choose your favorite color."
+                    "proposals": [ "latest", "v3.10.0" ],
+                    "default": "latest",
+                    "description": "Select gomplate version"
+                }
+            }
+        },
+        {
+            "id": "python-pip3",
+            "name": "Python pip3",
+            "options": {}
+        },
+        {
+            "id": "awscli",
+            "name": "AWS CLI",
+            "options": {},
+            "include": [
+                "python-pip3"
+            ]
+        },
+        {
+            "id": "protoc",
+            "name": "Protobuf Compiler",
+            "options": {
+                "golang": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Install gRPC golang library"
+                },
+                "python": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Install gRPC python library"
                 }
             },
-            "include": ["ubuntu"]
+            "include": [
+                "python-pip3"
+            ]
         }
     ]
 }
