@@ -113,6 +113,15 @@ EOF
     fi
 fi
 
+# Container-Structure-Test
+if [ ! -z ${_BUILD_ARG_CONTAINER_STRUCTURE_TEST} ]; then
+    echo "Installing container-structure-test..."
+
+    curl -o /tmp/container-structure-test https://storage.googleapis.com/container-structure-test/latest/container-structure-test-${os}-${architecture}
+    install /tmp/container-structure-test /usr/local/bin
+    rm -f /tmp/container-structure-test
+fi
+
 # Gomplate
 if [ ! -z ${_BUILD_ARG_GOMPLATE} ]; then
     echo "Activating feature 'gomplate'"
@@ -125,7 +134,7 @@ if [ ! -z ${_BUILD_ARG_GOMPLATE} ]; then
 fi
 
 # Python pip3
-if [ ! -z ${_BUILD_ARG_PYTHON-PIP3} ]; then
+if [ ! -z ${_BUILD_ARG_PYTHON_PIP3} ]; then
     echo "Activating feature 'python-pip3'"
     apt-get update
     apt-get -y install --no-install-recommends python3-pip
