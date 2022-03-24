@@ -1,6 +1,89 @@
 {
     "features": [
         {
+            "id": "kubernetes",
+            "name": "Kubernetes Tools",
+            "options": {
+                "skaffold": {
+                    "type": "string",
+                    "proposals": [ "none", "latest", "v1.37.0", "v1.36.0" ],
+                    "default": "latest",
+                    "description": "Select skaffold version"
+                },
+                "k3d": {
+                    "type": "string",
+                    "proposals": [ "none", "latest", "v5.2.2" ],
+                    "default": "latest",
+                    "description": "Select k3d version"
+                },
+                "kustomize": {
+                    "type": "string",
+                    "proposals": [ "none", "latest", "5.2.2" ],
+                    "default": "none",
+                    "description": "Select Kustomize version"
+                },
+                "istioctl": {
+                    "type": "string",
+                    "proposals": [ "none", "latest", "1.13.2" ],
+                    "default": "none",
+                    "description": "Select Istio version"
+                },
+                "krew": {
+                    "type": "string",
+                    "proposals": [ "none", "latest" ],
+                    "default": "latest",
+                    "description": "Install krew install script in /usr/local/install/k8s when not none."
+                }
+            },
+            "include": [
+                "kubectl-helm-minikube"
+            ]
+        },
+        {
+            "id": "gomplate",
+            "name": "Gomplate",
+            "options": {
+                "version": {
+                    "type": "string",
+                    "proposals": [ "latest", "v3.10.0" ],
+                    "default": "latest",
+                    "description": "Select gomplate version"
+                }
+            }
+        },
+        {
+            "id": "python-pip3",
+            "name": "Python pip3",
+            "options": {}
+        },
+        {
+            "id": "awscli",
+            "name": "AWS CLI",
+            "options": {},
+            "include": [
+                "python-pip3"
+            ]
+        },
+        {
+            "id": "protoc",
+            "name": "Protobuf Compiler",
+            "options": {
+                "golang": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Install gRPC golang library"
+                },
+                "python": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Install gRPC python library"
+                }
+            },
+            "include": [
+                "python-pip3"
+            ]
+        },
+        {
             "id": "helloworld",
             "name": "My First Feature",
             "options": {
