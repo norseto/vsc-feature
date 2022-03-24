@@ -52,9 +52,16 @@
             }
         },
         {
+            "id": "container-structure-test",
+            "name": "Container Structure Test",
+            "options": {},
+            "buildArg": "_BUILD_ARG_CONTAINER_STRUCTURE_TEST"
+        },
+        {
             "id": "python-pip3",
             "name": "Python pip3",
-            "options": {}
+            "options": {},
+            "buildArg": "_BUILD_ARG_PYTHON_PIP3"
         },
         {
             "id": "awscli",
