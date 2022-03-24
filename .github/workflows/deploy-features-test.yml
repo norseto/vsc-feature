@@ -1,4 +1,4 @@
-name: 'Deploy Features'
+name: 'Feature Test'
 on:
   push:
     tags:
