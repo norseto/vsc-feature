@@ -32,6 +32,11 @@ Protobuf Compiler with some language options.
 - golang - If true, will install protoc-gen-go@v1.26 and so on. Default is false.
 - python - If true, will install grpcio, grpcio-tools. Default is false.
 
+## container-structure-test
+[Container Structure Test](https://github.com/GoogleContainerTools/container-structure-test)
+### Options
+(None)
+
 ## Include these features in your project's devcontainer 
 
 To include your feature in a project's devcontainer, provide the following `features` like so.
