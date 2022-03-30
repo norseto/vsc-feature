@@ -57,6 +57,8 @@ if [ ! -z ${_BUILD_ARG_KUBERNETES} ]; then
         fi
 
         curl -sLo /tmp/install_kustomize.sh "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"
+        # Add workaround for ARM Linux
+        sed -i -e 's/arm64)/arm64|aarch64)/' /tmp/install_kustomize.sh
         chmod +x /tmp/install_kustomize.sh
 
         (
