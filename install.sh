@@ -97,6 +97,10 @@ set -e
 #--------------------------------------
 # Krew
 #--------------------------------------
+if [ -z "\$(git config --global init.defaultBranch)" ] ; then
+  git config --global init.defaultBranch main
+fi
+
 (
   set -x; cd "\$(mktemp -d)" &&
   OS="\$(uname | tr '[:upper:]' '[:lower:]')" &&
