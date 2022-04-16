@@ -115,7 +115,6 @@ PATH="\${HOME}/.krew/bin:\$PATH" kubectl krew install ns
 PATH="\${HOME}/.krew/bin:\$PATH" kubectl krew install ctx
 EOF
         chmod +x /usr/local/install/k8s/krew.sh
-
     fi
 fi
 
@@ -132,7 +131,7 @@ fi
 if [ ! -z ${_BUILD_ARG_GOMPLATE} ]; then
     echo "Activating feature 'gomplate'"
 
-    VERSION=${_BUILD_ARG_GOMPLATE_VERSION:-latest}
+    VERSION=${_BUILD_ARG_GOMPLATE_VERSION:-v3.10.0}
 
     curl -sLo gomplate https://github.com/hairyhenderson/gomplate/releases/download/${VERSION}/gomplate_${os}-${architecture}-slim
     install gomplate /usr/local/bin

@@ -45,8 +45,8 @@
             "options": {
                 "version": {
                     "type": "string",
-                    "proposals": [ "latest", "v3.10.0" ],
-                    "default": "latest",
+                    "proposals": [ "v3.10.0" ],
+                    "default": "v3.10.0",
                     "description": "Select gomplate version"
                 }
             }
@@ -68,7 +68,7 @@
             "name": "AWS CLI",
             "options": {},
             "include": [
-                "python-pip3"
+                "norseto/vsc-feature/python-pip3"
             ]
         },
         {
