@@ -11,9 +11,10 @@ set -a
 set +a
 
 architecture="$(uname -m)"
+arch=${architecture}
 case ${architecture} in
-    x86_64) architecture="amd64";;
-    aarch64 | armv8*) architecture="arm64";;
+    x86_64) architecture="amd64"; arch="amd64";;
+    aarch64 | armv8*) architecture="arm64"; arch="arm";;
     # aarch32 | armv7* | armvhf*) architecture="arm";;
     # i?86) architecture="386";;
     *) echo "(!) Architecture ${architecture} unsupported"; exit 1 ;;
@@ -34,7 +35,7 @@ if [ ! -z ${_BUILD_ARG_KUBERNETES} ]; then
         VERSION=${_BUILD_ARG_KUBERNETES_SKAFFOLD:-latest}
 
         curl -sLo /tmp/skaffold https://storage.googleapis.com/skaffold/releases/${VERSION}/skaffold-${os}-${architecture}
-        install /tmp/skaffold /usr/local/bin/ && rm -f /tmp/skaffold
+        install /tmp/skaffold /usr/local/bin && rm -f /tmp/skaffold
     fi
 
     # K3d
@@ -133,7 +134,7 @@ if [ ! -z ${_BUILD_ARG_GOMPLATE} ]; then
 
     VERSION=${_BUILD_ARG_GOMPLATE_VERSION:-v3.10.0}
 
-    curl -sLo gomplate https://github.com/hairyhenderson/gomplate/releases/download/${VERSION}/gomplate_${os}-${architecture}-slim
+    curl -vLo gomplate https://github.com/hairyhenderson/gomplate/releases/download/${VERSION}/gomplate_${os}-amd64-slim
     install gomplate /usr/local/bin
     rm gomplate
 fi
@@ -181,4 +182,22 @@ if [ ! -z ${_BUILD_ARG_PROTOC} ]; then
     apt-get autoremove -y
     apt-get clean -y
     rm -rf /var/lib/apt/lists/*
+fi
+
+# Envoy Proxy
+if [ ! -z ${_BUILD_ARG_ENVOY} ]; then
+    echo "Activating feature 'envoy proxy'"
+    cp -pr ./envoy /usr/local/envoy
+fi
+
+# Waypoint
+if [ ! -z ${_BUILD_ARG_WAYPOINT} ]; then
+    echo "Activating feature 'Waypoint'"
+
+    VERSION=${_BUILD_ARG_WAYPOINT_VERSION:-0.8.1}
+
+    curl -Lo /tmp/waypoint.zip https://releases.hashicorp.com/waypoint/${VERSION}/waypoint_${VERSION}_${os}_amd64.zip
+    (cd /tmp; unzip waypoint.zip)
+    install /tmp/waypoint /usr/local/bin
+    rm -f /tmp/waypoint /tmp/waypoint.zip
 fi

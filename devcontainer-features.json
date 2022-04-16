@@ -68,7 +68,7 @@
             "name": "AWS CLI",
             "options": {},
             "include": [
-                "norseto/vsc-feature/python-pip3"
+                "python-pip3"
             ]
         },
         {
@@ -88,6 +88,28 @@
             },
             "include": [
                 "python-pip3"
+            ]
+        },
+        {
+            "id": "envoy",
+            "name": "Envoy Proxy",
+            "options": {},
+            "include": [
+                "gomplate"
+            ]
+        },
+        {
+            "id": "waypoint",
+            "name": "Hashicorp Waypoint",
+            "options": {
+                "version": {
+                    "type": "string",
+                    "default": "0.8.1",
+                    "proposals": [ "0.8.1" ]
+                }
+            },
+            "include": [
+                "gomplate"
             ]
         }
     ]
