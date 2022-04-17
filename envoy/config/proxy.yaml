@@ -1,0 +1,5 @@
+proxy:
+- name: waypoint
+  listen: 9701
+  host: host.docker.internal
+  port: 9701
