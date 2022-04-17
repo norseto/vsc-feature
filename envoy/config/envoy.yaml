@@ -1,0 +1,15 @@
+node:
+  cluster: envoy-cluster
+  id: envoy-node-001
+
+dynamic_resources:
+  cds_config:
+    path: /usr/local/envoy/config/cds.yaml
+  lds_config:
+    path: /usr/local/envoy/config/lds.yaml
+
+admin:
+  address:
+    socket_address:
+      address: 0.0.0.0
+      port_value: 19000

@@ -45,8 +45,8 @@
             "options": {
                 "version": {
                     "type": "string",
-                    "proposals": [ "latest", "v3.10.0" ],
-                    "default": "latest",
+                    "proposals": [ "v3.10.0" ],
+                    "default": "v3.10.0",
                     "description": "Select gomplate version"
                 }
             }
@@ -88,6 +88,28 @@
             },
             "include": [
                 "python-pip3"
+            ]
+        },
+        {
+            "id": "envoy",
+            "name": "Envoy Proxy",
+            "options": {},
+            "include": [
+                "gomplate"
+            ]
+        },
+        {
+            "id": "waypoint",
+            "name": "Hashicorp Waypoint",
+            "options": {
+                "version": {
+                    "type": "string",
+                    "default": "0.8.1",
+                    "proposals": [ "0.8.1" ]
+                }
+            },
+            "include": [
+                "gomplate"
             ]
         }
     ]
