@@ -37,6 +37,16 @@ Protobuf Compiler with some language options.
 ### Options
 (None)
 
+## Envoy
+Scripts for [Envoy Proxy](https://www.envoyproxy.io/) in /usr/local/envoy
+### Options
+(None)
+
+## Envoy
+[Waypoint](https://www.waypointproject.io/)
+### Options
+- version - Version
+
 ## Include these features in your project's devcontainer 
 
 To include your feature in a project's devcontainer, provide the following `features` like so.
