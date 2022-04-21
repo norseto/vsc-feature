@@ -24,7 +24,7 @@ Python pip3
 ## awscli
 AWS CLI installed with pip3
 ### Options
-(None)
+- eksctl - Set "latest" or eksctl version like "v0.92.0". Default is "latest"
 
 ## protoc
 Protobuf Compiler with some language options.
