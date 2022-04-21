@@ -154,6 +154,18 @@ if [ ! -z ${_BUILD_ARG_AWSCLI} ]; then
     echo "Activating feature 'awscli'"
 
     pip3 install awscli
+
+    if [ ! -z ${_BUILD_ARG_AWSCLI_EKSCTL} ] ; then
+        echo "Activating feature 'eksctl'"
+        VERSION=${_BUILD_ARG_AWSCLI_EKSCTL:-latest}
+        DLURL=https://github.com/weaveworks/eksctl/releases/download/${VERSION}/eksctl_$(echo ${os} | sed -e 's/l/L/')_${architecture}.tar.gz
+        if [ "xlatest" = "x${VERSION}" ] ; then
+            DLURL=https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(echo ${os} | sed -e 's/l/L/')_${architecture}.tar.gz
+        fi
+        curl -L ${DLURL} | tar xz -C /tmp
+        install /tmp/eksctl /usr/local/bin
+        rm /tmp/eksctl
+    fi
 fi
 
 # Protocolbuffer Compiler
