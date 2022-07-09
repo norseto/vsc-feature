@@ -12,7 +12,7 @@ This is a kubernetes tools feature that contains some cli below.
 - krew - Set "latest" or "none". Default is "latest"
 
 ## gomplate
-This is a gomplate engine.
+Gomplate engine.
 ### Options
 - version - Set version to install. Default is "latest"
 
@@ -42,7 +42,7 @@ Scripts for [Envoy Proxy](https://www.envoyproxy.io/) in /usr/local/envoy
 ### Options
 (None)
 
-## Envoy
+## Waypoint
 [Waypoint](https://www.waypointproject.io/)
 ### Options
 - version - Version
