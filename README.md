@@ -12,7 +12,7 @@ This is a kubernetes tools feature that contains some cli below.
 - krew - Set "latest" or "none". Default is "latest"
 
 ## gomplate
-This is a gomplate engine.
+Gomplate engine.
 ### Options
 - version - Set version to install. Default is "latest"
 
@@ -42,11 +42,17 @@ Scripts for [Envoy Proxy](https://www.envoyproxy.io/) in /usr/local/envoy
 ### Options
 (None)
 
-## Envoy
+## Waypoint
 [Waypoint](https://www.waypointproject.io/)
 ### Options
 - version - Version
 
+## ko
+[ko: Easy Go Containers](https://github.com/google/ko)
+### Options
+- version - Set version to install. Default is "0.11.2"
+
+---
 ## Include these features in your project's devcontainer 
 
 To include your feature in a project's devcontainer, provide the following `features` like so.
