@@ -118,6 +118,18 @@
             "include": [
                 "envoy"
             ]
+        },
+        {
+            "id": "ko",
+            "name": "ko",
+            "options": {
+                "version": {
+                    "type": "string",
+                    "proposals": [ "0.11.2" ],
+                    "default": "0.11.2",
+                    "description": "Select ko version"
+                }
+            }
         }
     ]
 }
