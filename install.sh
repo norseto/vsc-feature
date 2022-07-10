@@ -13,8 +13,8 @@ set +a
 architecture="$(uname -m)"
 arch=${architecture}
 case ${architecture} in
-    x86_64) architecture="amd64"; arch="amd64";;
-    aarch64 | armv8*) architecture="arm64"; arch="arm";;
+    x86_64) architecture="amd64"; architecture2="x86_64"; arch="amd64";;
+    aarch64 | armv8*) architecture="arm64"; architecture2="arm64"; arch="arm";;
     # aarch32 | armv7* | armvhf*) architecture="arm";;
     # i?86) architecture="386";;
     *) echo "(!) Architecture ${architecture} unsupported"; exit 1 ;;
@@ -212,4 +212,15 @@ if [ ! -z ${_BUILD_ARG_WAYPOINT} ]; then
     (cd /tmp; unzip waypoint.zip)
     install /tmp/waypoint /usr/local/bin
     rm -f /tmp/waypoint /tmp/waypoint.zip
+fi
+
+# ko
+if [ ! -z ${_BUILD_ARG_KO} ]; then
+    echo "Activating feature 'ko'"
+
+    VERSION=${_BUILD_ARG_KO_VERSION:-0.11.2}
+
+    curl -L https://github.com/google/ko/releases/download/v${VERSION}/ko_${VERSION}_${os}_${architecture2}.tar.gz | tar xzf - ko
+    install ko /usr/local/bin
+    rm -f ko
 fi
