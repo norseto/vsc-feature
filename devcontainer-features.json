@@ -45,8 +45,8 @@
             "options": {
                 "version": {
                     "type": "string",
-                    "proposals": [ "v3.10.0" ],
-                    "default": "v3.10.0",
+                    "proposals": [ "latest", "v3.10.0" ],
+                    "default": "latest",
                     "description": "Select gomplate version"
                 }
             }
@@ -125,8 +125,8 @@
             "options": {
                 "version": {
                     "type": "string",
-                    "proposals": [ "0.11.2" ],
-                    "default": "0.11.2",
+                    "proposals": [ "latest", "v0.11.2" ],
+                    "default": "latest",
                     "description": "Select ko version"
                 }
             }
