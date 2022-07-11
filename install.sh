@@ -10,11 +10,31 @@ set -a
 . ./devcontainer-features.env
 set +a
 
+function get_github_latest_tag {
+  local desired=$1
+
+  if [ "${desired}" != "latest" -a ! -z "${desired}" ] ; then
+    echo ${desired}
+    return
+  fi
+
+  local repo=$2;
+  local default_tag=$3;
+  local url="https://api.github.com/repos/${repo}/releases/latest"
+  local tag=$(curl -s ${url} | jq -re .tag_name 2>/dev/null)
+  local stat=$?
+  if [ ${stat} -eq 0 -a ! -z "${tag}" ] ; then
+    echo ${tag}
+  else
+    echo ${default_tag}
+  fi
+}
+
 architecture="$(uname -m)"
 arch=${architecture}
 case ${architecture} in
-    x86_64) architecture="amd64"; architecture2="x86_64"; arch="amd64";;
-    aarch64 | armv8*) architecture="arm64"; architecture2="arm64"; arch="arm";;
+    x86_64)           architecture="amd64"; architecture2="x86_64"; arch="amd64";;
+    aarch64 | armv8*) architecture="arm64"; architecture2="arm64";  arch="arm";;
     # aarch32 | armv7* | armvhf*) architecture="arm";;
     # i?86) architecture="386";;
     *) echo "(!) Architecture ${architecture} unsupported"; exit 1 ;;
@@ -132,7 +152,7 @@ fi
 if [ ! -z ${_BUILD_ARG_GOMPLATE} ]; then
     echo "Activating feature 'gomplate'"
 
-    VERSION=${_BUILD_ARG_GOMPLATE_VERSION:-v3.10.0}
+    VERSION=$(get_github_latest_tag "${_BUILD_ARG_GOMPLATE_VERSION}" hairyhenderson/gomplate v3.10.0)
 
     curl -vLo gomplate https://github.com/hairyhenderson/gomplate/releases/download/${VERSION}/gomplate_${os}-amd64-slim
     install gomplate /usr/local/bin
@@ -157,11 +177,9 @@ if [ ! -z ${_BUILD_ARG_AWSCLI} ]; then
 
     if [ ! -z ${_BUILD_ARG_AWSCLI_EKSCTL} ] ; then
         echo "Activating feature 'eksctl'"
-        VERSION=${_BUILD_ARG_AWSCLI_EKSCTL:-latest}
+        VERSION=$(get_github_latest_tag "${_BUILD_ARG_AWSCLI_EKSCTL}" weaveworks/eksctl v0.105.0)
+
         DLURL=https://github.com/weaveworks/eksctl/releases/download/${VERSION}/eksctl_$(echo ${os} | sed -e 's/l/L/')_${architecture}.tar.gz
-        if [ "xlatest" = "x${VERSION}" ] ; then
-            DLURL=https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(echo ${os} | sed -e 's/l/L/')_${architecture}.tar.gz
-        fi
         curl -L ${DLURL} | tar xz -C /tmp
         install /tmp/eksctl /usr/local/bin
         rm /tmp/eksctl
@@ -218,8 +236,8 @@ fi
 if [ ! -z ${_BUILD_ARG_KO} ]; then
     echo "Activating feature 'ko'"
 
-    VERSION=${_BUILD_ARG_KO_VERSION:-0.11.2}
-
+    VERSION=$(get_github_latest_tag "${_BUILD_ARG_KO_VERSION}" google/ko 0.11.2 | sed -e 's/v//')
+    
     curl -L https://github.com/google/ko/releases/download/v${VERSION}/ko_${VERSION}_${os}_${architecture2}.tar.gz | tar xzf - ko
     install ko /usr/local/bin
     rm -f ko
