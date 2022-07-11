@@ -45,12 +45,12 @@ Scripts for [Envoy Proxy](https://www.envoyproxy.io/) in /usr/local/envoy
 ## Waypoint
 [Waypoint](https://www.waypointproject.io/)
 ### Options
-- version - Version
+- version - Version to install e.g. "0.8.1"
 
 ## ko
 [ko: Easy Go Containers](https://github.com/google/ko)
 ### Options
-- version - Set version to install. Default is "0.11.2"
+- version - Set version to install. Default is "latest"
 
 ---
 ## Include these features in your project's devcontainer 
