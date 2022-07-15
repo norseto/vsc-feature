@@ -34,10 +34,7 @@
                     "default": "latest",
                     "description": "Install krew install script in /usr/local/install/k8s when not none."
                 }
-            },
-            "include": [
-                "kubectl-helm-minikube"
-            ]
+            }
         },
         {
             "id": "gomplate",
@@ -73,10 +70,7 @@
                     "default": "latest",
                     "description": "Install eksctl"
                 }
-            },
-            "include": [
-                "python-pip3"
-            ]
+            }
         },
         {
             "id": "protoc",
@@ -92,18 +86,12 @@
                     "default": false,
                     "description": "Install gRPC python library"
                 }
-            },
-            "include": [
-                "python-pip3"
-            ]
+            }
         },
         {
             "id": "envoy",
             "name": "Envoy Proxy",
-            "options": {},
-            "include": [
-                "gomplate"
-            ]
+            "options": {}
         },
         {
             "id": "waypoint",
@@ -114,10 +102,7 @@
                     "default": "0.8.1",
                     "proposals": [ "0.8.1" ]
                 }
-            },
-            "include": [
-                "envoy"
-            ]
+            }
         },
         {
             "id": "ko",
@@ -127,7 +112,26 @@
                     "type": "string",
                     "proposals": [ "latest", "v0.11.2" ],
                     "default": "latest",
-                    "description": "Select ko version"
+                    "description": "ko version"
+                }
+            }
+        },
+        {
+            "id": "terraform-tools",
+            "name": "Terraform Tools",
+            "buildArg": "_BUILD_ARG_TERRAFORM_TOOLS",
+            "options": {
+                "tfmigrate": {
+                    "type": "string",
+                    "proposals": [ "latest", "v0.3.4" ],
+                    "default": "latest",
+                    "description": "tfmigrate version"
+                },
+                "tfdocs": {
+                    "type": "string",
+                    "proposals": [ "latest", "v0.16.0" ],
+                    "default": "latest",
+                    "description": "terraform-docs version"
                 }
             }
         }
