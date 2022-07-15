@@ -52,6 +52,12 @@ Scripts for [Envoy Proxy](https://www.envoyproxy.io/) in /usr/local/envoy
 ### Options
 - version - Set version to install. Default is "latest"
 
+## terraform-tools
+Some tools not installed with official terraform feature.
+### Options
+- tfmigrate - Set version of [tfmigrate](https://github.com/minamijoyo/tfmigrate) to install. Default is "latest"
+- tfdocs - Set version of [terraform-docs](https://github.com/terraform-docs/terraform-docs) to install. Default is "latest"
+
 ---
 ## Include these features in your project's devcontainer 
 
