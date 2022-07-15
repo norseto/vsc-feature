@@ -236,9 +236,29 @@ fi
 if [ ! -z ${_BUILD_ARG_KO} ]; then
     echo "Activating feature 'ko'"
 
-    VERSION=$(get_github_latest_tag "${_BUILD_ARG_KO_VERSION}" google/ko 0.11.2 | sed -e 's/v//')
+    VERSION=$(get_github_latest_tag "${_BUILD_ARG_KO_VERSION}" google/ko v0.11.2 | sed -e 's/v//')
     
     curl -L https://github.com/google/ko/releases/download/v${VERSION}/ko_${VERSION}_${os}_${architecture2}.tar.gz | tar xzf - ko
     install ko /usr/local/bin
     rm -f ko
+fi
+
+if [ ! -z ${_BUILD_ARG_TERRAFORM_TOOLS} ]; then
+    echo "Activating feature 'terraform-tools'"
+
+    VERSION=$(get_github_latest_tag "${_BUILD_ARG_TERRAFORM_TOOLS_TFMIGRATE}" minamijoyo/tfmigrate v0.3.4 | sed -e 's/v//')
+
+    if [ "${VERSION}" != "none" ]; then
+        curl -L https://github.com/minamijoyo/tfmigrate/releases/download/v${VERSION}/tfmigrate_${VERSION}_${os}_${architecture}.tar.gz | tar xzf - tfmigrate
+        install tfmigrate /usr/local/bin
+        rm -f tfmigrate
+    fi
+
+    VERSION=$(get_github_latest_tag "${_BUILD_ARG_TERRAFORM_TOOLS_TFDOCS}" terraform-docs/terraform-docs v0.16.0)
+
+    if [ "${VERSION}" != "none" ]; then
+        curl -L https://github.com/terraform-docs/terraform-docs/releases/download/${VERSION}/terraform-docs-${VERSION}-${os}-${architecture}.tar.gz| tar xzf - terraform-docs
+        install terraform-docs /usr/local/bin
+        rm -f terraform-docs
+    fi
 fi
