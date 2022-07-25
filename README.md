@@ -52,11 +52,16 @@ Scripts for [Envoy Proxy](https://www.envoyproxy.io/) in /usr/local/envoy
 ### Options
 - version - Set version to install. Default is "latest"
 
-## terraform-tools
+## terraform-tools (v0.1.8)
 Some tools not installed with official terraform feature.
 ### Options
 - tfmigrate - Set version of [tfmigrate](https://github.com/minamijoyo/tfmigrate) to install. Default is "latest"
 - tfdocs - Set version of [terraform-docs](https://github.com/terraform-docs/terraform-docs) to install. Default is "latest"
+
+## terraform-diagram (v0.1.9)
+Terraform diagram with python. Installs, diagrams python module, graphviz, xdg-utils and VS Code plugin. Requires pip3
+### Options
+(None)
 
 ---
 ## Include these features in your project's devcontainer 
