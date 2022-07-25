@@ -262,3 +262,14 @@ if [ ! -z ${_BUILD_ARG_TERRAFORM_TOOLS} ]; then
         rm -f terraform-docs
     fi
 fi
+
+if [ ! -z ${_BUILD_ARG_TERRAFORM_DIAGRAMS} ]; then
+    echo "Activating feature 'terraform-diagrams'"
+
+    apt-get update
+    apt-get -y install --no-install-recommends graphviz xdg-utils --fix-missing
+    apt-get autoremove -y
+    apt-get clean -y
+    rm -rf /var/lib/apt/lists/*
+    pip3 install diagrams
+fi
