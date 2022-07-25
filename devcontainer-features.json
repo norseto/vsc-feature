@@ -134,6 +134,15 @@
                     "description": "terraform-docs version"
                 }
             }
+        },
+        {
+            "id": "terraform-diagrams",
+            "name": "Terraform Diagram Tools",
+            "buildArg": "_BUILD_ARG_TERRAFORM_DIAGRAMS",
+            "options": {},
+            "extensions": [
+				"tehpeng.diagramspreviewer"
+			]
         }
     ]
 }
