@@ -273,3 +273,27 @@ if [ ! -z ${_BUILD_ARG_TERRAFORM_DIAGRAMS} ]; then
     rm -rf /var/lib/apt/lists/*
     pip3 install diagrams
 fi
+
+if [ ! -z ${_BUILD_ARG_TERRAFORMER} ]; then
+    echo "Activating feature 'terraformer'"
+
+    VERSION=$(get_github_latest_tag "${_BUILD_ARG_TERRAFORMER_VERSION}" GoogleCloudPlatform/terraformer v0.8.21 | sed -e 's/v//')
+    PROVIDER=${_BUILD_ARG_TERRAFORMER_PROVIDER}
+    URL_BASE="https://github.com/GoogleCloudPlatform/terraformer/releases/download/${VERSION}"
+
+    set +e
+    curl -o terraformer -fL ${URL_BASE}/terraformer-${PROVIDER}-${os}-${architecture}
+    if [ $? -ne 0 -a ${PROVIDER} != "all" ]; then
+        rm -f terraformer
+        echo "Terraformer not found. Try all provider."
+        curl -o terraformer -fL ${URL_BASE}/terraformer-all-${os}-${architecture}
+        if [ $? -ne 0 ]; then
+            echo "Terraformer not found."
+            exit 1
+        fi
+    fi
+    strip terraformer
+    set -e
+    install terraformer /usr/local/bin
+    rm -f terraformer
+fi

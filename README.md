@@ -63,6 +63,13 @@ Terraform diagram with python. Installs, diagrams python module, graphviz, xdg-u
 ### Options
 (None)
 
+## terraformer (v0.1.10)
+Install [terraformer](https://github.com/GoogleCloudPlatform/terraformer).
+
+### Options
+- version - Set version to install. Default is "latest"
+- provider - Provider to use. Default is "all"
+
 ---
 ## Include these features in your project's devcontainer 
 
