@@ -1,6 +1,7 @@
 {
     "id": "kubernetes",
     "name": "Kubernetes Tools",
+    "version": "v0.2.0",
     "options": {
         "skaffold": {
             "type": "string",

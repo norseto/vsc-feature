@@ -1,5 +1,6 @@
 {
     "id": "python-pip3",
     "name": "Python pip3",
+    "version": "v0.2.0",
     "options": {}
 }

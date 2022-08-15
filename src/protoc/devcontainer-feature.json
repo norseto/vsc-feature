@@ -1,6 +1,7 @@
 {
     "id": "protoc",
     "name": "Protobuf Compiler",
+    "version": "v0.2.0",
     "options": {
         "golang": {
             "type": "boolean",
