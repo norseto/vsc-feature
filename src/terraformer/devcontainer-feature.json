@@ -1,6 +1,7 @@
 {
     "id": "terraformer",
     "name": "Reverse Terraform Tool",
+    "version": "v0.2.0",
     "options": {
         "version": {
             "type": "string",

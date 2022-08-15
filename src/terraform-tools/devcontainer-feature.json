@@ -1,6 +1,7 @@
 {
     "id": "terraform-tools",
     "name": "Terraform Tools",
+    "version": "v0.2.0",
     "options": {
         "tfmigrate": {
             "type": "string",

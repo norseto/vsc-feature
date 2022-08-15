@@ -1,6 +1,7 @@
 {
     "id": "ko",
     "name": "ko",
+    "version": "v0.2.0",
     "options": {
         "version": {
             "type": "string",
