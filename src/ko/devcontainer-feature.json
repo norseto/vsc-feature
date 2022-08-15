@@ -1,0 +1,12 @@
+{
+    "id": "ko",
+    "name": "ko",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [ "latest", "v0.11.2" ],
+            "default": "latest",
+            "description": "ko version"
+        }
+    }
+}

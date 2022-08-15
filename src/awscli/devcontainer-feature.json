@@ -1,0 +1,13 @@
+{
+    "id": "awscli",
+    "version": "v0.2.0",
+    "name": "AWS CLI",
+    "options": {
+        "eksctl": {
+            "type": "string",
+            "proposals": [ "latest", "v0.93.0" ],
+            "default": "latest",
+            "description": "Install eksctl"
+        }
+    }
+}

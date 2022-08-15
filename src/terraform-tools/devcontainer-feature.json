@@ -1,0 +1,18 @@
+{
+    "id": "terraform-tools",
+    "name": "Terraform Tools",
+    "options": {
+        "tfmigrate": {
+            "type": "string",
+            "proposals": [ "latest", "v0.3.4" ],
+            "default": "latest",
+            "description": "tfmigrate version"
+        },
+        "tfdocs": {
+            "type": "string",
+            "proposals": [ "latest", "v0.16.0" ],
+            "default": "latest",
+            "description": "terraform-docs version"
+        }
+    }
+}
