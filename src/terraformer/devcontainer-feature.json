@@ -1,0 +1,19 @@
+{
+    "id": "terraformer",
+    "name": "Reverse Terraform Tool",
+    "version": "v0.2.0",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [ "latest", "v0.8.21" ],
+            "default": "latest",
+            "description": "terraformer version"
+        },
+        "provider": {
+            "type": "string",
+            "proposals": [ "all", "aws", "google", "azure" ],
+            "default": "all",
+            "description": "terraformer provider"
+        }
+    }
+}
