@@ -1,0 +1,11 @@
+{
+    "id": "waypoint",
+    "name": "Hashicorp Waypoint",
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "0.8.1",
+            "proposals": [ "0.8.1" ]
+        }
+    }
+}

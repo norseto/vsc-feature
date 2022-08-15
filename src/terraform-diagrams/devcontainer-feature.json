@@ -1,0 +1,8 @@
+{
+    "id": "terraform-diagrams",
+    "name": "Terraform Diagram Tools",
+    "options": {},
+    "extensions": [
+        "tehpeng.diagramspreviewer"
+    ]
+}

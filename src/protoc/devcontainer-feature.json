@@ -1,0 +1,16 @@
+{
+    "id": "protoc",
+    "name": "Protobuf Compiler",
+    "options": {
+        "golang": {
+            "type": "boolean",
+            "default": false,
+            "description": "Install gRPC golang library"
+        },
+        "python": {
+            "type": "boolean",
+            "default": false,
+            "description": "Install gRPC python library"
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "id": "gomplate",
+    "name": "Gomplate",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [ "latest", "v3.10.0" ],
+            "default": "latest",
+            "description": "Select gomplate version"
+        }
+    }
+}
