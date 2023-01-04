@@ -18,7 +18,7 @@ function get_github_latest_tag {
   local repo=$2;
   local default_tag=$3;
   local url="https://api.github.com/repos/${repo}/releases/latest"
-  local tag=$(curl -s ${url} | jq -re .tag_name 2>/dev/null)
+  local tag=$(curl -sL ${url} | jq -re .tag_name 2>/dev/null)
   local stat=$?
   if [ ${stat} -eq 0 -a ! -z "${tag}" ] ; then
     echo ${tag}
@@ -39,7 +39,7 @@ esac
 
 os="$(uname -s)"
 case ${os} in
-    Linux) os="linux";;
+    Linux) os="Linux";;
     # Darwin) os="darwin";;
     *) echo "(!) OS ${os} unsupported"; exit 1 ;;
 esac
@@ -49,6 +49,7 @@ echo "Activating feature 'ko'"
 
 VERSION=$(get_github_latest_tag "${VERSION}" google/ko v0.11.2 | sed -e 's/v//')
 
+echo "Download: https://github.com/google/ko/releases/download/v${VERSION}/ko_${VERSION}_${os}_${architecture2}.tar.gz"
 curl -L https://github.com/google/ko/releases/download/v${VERSION}/ko_${VERSION}_${os}_${architecture2}.tar.gz | tar xzf - ko
 install ko /usr/local/bin
 rm -f ko

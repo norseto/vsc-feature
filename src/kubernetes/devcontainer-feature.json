@@ -1,7 +1,7 @@
 {
     "id": "kubernetes",
     "name": "Kubernetes Tools",
-    "version": "v0.2.0",
+    "version": "v0.2.1",
     "options": {
         "skaffold": {
             "type": "string",
@@ -32,6 +32,12 @@
             "proposals": [ "none", "latest" ],
             "default": "latest",
             "description": "Install krew install script in /usr/local/install/k8s when not none."
+        },
+        "kpt": {
+            "type": "string",
+            "proposals": [ "none", "latest" ],
+            "default": "none",
+            "description": "Install kpt"
         }
     }
 }
