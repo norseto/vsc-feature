@@ -21,7 +21,7 @@ function get_github_latest_tag {
   local repo=$2;
   local default_tag=$3;
   local url="https://api.github.com/repos/${repo}/releases/latest"
-  local tag=$(curl -s ${url} | jq -re .tag_name 2>/dev/null)
+  local tag=$(curl -sL ${url} | jq -re .tag_name 2>/dev/null)
   local stat=$?
   if [ ${stat} -eq 0 -a ! -z "${tag}" ] ; then
     echo ${tag}

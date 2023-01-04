@@ -17,7 +17,27 @@ function get_github_latest_tag {
   local repo=$2;
   local default_tag=$3;
   local url="https://api.github.com/repos/${repo}/releases/latest"
-  local tag=$(curl -s ${url} | jq -re .tag_name 2>/dev/null)
+  local tag=$(curl -sL ${url} | jq -re .tag_name 2>/dev/null)
+  local stat=$?
+  if [ ${stat} -eq 0 -a ! -z "${tag}" ] ; then
+    echo ${tag}
+  else
+    echo ${default_tag}
+  fi
+}
+
+function get_filtered_github_latest_tag {
+  local desired=$1
+
+  if [ "${desired}" != "latest" -a ! -z "${desired}" ] ; then
+    echo ${desired}
+    return
+  fi
+
+  local repo=$2;
+  local default_tag=$3;
+  local url="https://api.github.com/repos/${repo}/releases"
+  local tag=$(curl -sL ${url} | jq -re 'first(.[].tag_name | match("^[^/]+$") | .string)' 2>/dev/null)
   local stat=$?
   if [ ${stat} -eq 0 -a ! -z "${tag}" ] ; then
     echo ${tag}
@@ -59,7 +79,7 @@ if [ "xnone" != "x${K3D}" ]; then
 
     VERSION=${K3D:-latest}
 
-    curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=${K3D_VERSION} bash
+    curl -sL https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=${K3D_VERSION} bash
 fi
 
 # Kustomize
@@ -131,4 +151,16 @@ PATH="\${HOME}/.krew/bin:\$PATH" kubectl krew install ns
 PATH="\${HOME}/.krew/bin:\$PATH" kubectl krew install ctx
 EOF
         chmod +x /usr/local/install/k8s/krew.sh
+fi
+
+# kpt
+if [ "xnone" != "x${KPT}" ]; then
+    echo "Activating feature 'kpt'"
+
+    VERSION=${KPT:-latest}
+    VERSION=$(get_filtered_github_latest_tag "${VERSION}" GoogleContainerTools/kpt v0.39.1 | sed -e 's/v//')
+
+    curl -sLo kpt https://github.com/GoogleContainerTools/kpt/releases/download/v${VERSION}/kpt_${os}_${architecture}
+    install kpt /usr/local/bin
+    rm -f kpt
 fi
