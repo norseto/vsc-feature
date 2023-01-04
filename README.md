@@ -10,6 +10,7 @@ This is a kubernetes tools feature that contains some cli below.
 - kustomize - Set version to install. Default is "none"
 - istioctl - Set version to install. Default is "none"
 - krew - Set "latest" or "none". Default is "latest"
+- kpt - Set "latest" or "none". Default is "none" (v0.2.1)
 
 ## gomplate
 Gomplate engine.
